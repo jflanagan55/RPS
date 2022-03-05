@@ -1,4 +1,30 @@
 
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const docBody = document.querySelector('#results');
+
+let compScore = 0;
+let playerScore = 0;
+
+
+
+rockBtn.addEventListener('click' , () => {
+    playRound("Rock", computerPlay());
+})
+
+paperBtn.addEventListener('click' , () => {
+    playRound("Paper", computerPlay());
+})
+
+scissorsBtn.addEventListener('click' , () => {
+    playRound("Scissors", computerPlay());
+})
+
+
+
+
+
 function computerPlay(){
     let selection = Math.floor(Math.random()* 3);
     if(selection===0){
@@ -14,64 +40,93 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection){
     if(computerSelection === "Rock"){
         if(playerSelection === "Scissors"){
-            return "Computer Wins";
+            let div = document.createElement('div');
+            div.textContent = "Computer Wins"
+            docBody.append(div);
+            compScore++;
+            displayScore (playerScore, compScore)
+            
         }
         else if(playerSelection === "Paper"){
-            return "Player wins"
+            let div = document.createElement('div');
+            div.textContent = "Player wins"
+            docBody.append(div);
+            playerScore++;
+            displayScore (playerScore, compScore);
         }
         else{
-            return "It's a tie"
+            let div = document.createElement('div');
+            div.textContent = "It's a tie"
+            docBody.append(div);
         }
     }
     else if(computerSelection === "Paper"){
         if(playerSelection === "Scissors"){
-            return "Player Wins";
+            let div = document.createElement('div');
+            div.textContent = "Player wins"
+            docBody.append(div);
+            playerScore++;
+            displayScore (playerScore, compScore);
         }
         else if(playerSelection === "Rock"){
-            return "Computer wins"
+            let div = document.createElement('div');
+            div.textContent = "Computer Wins"
+            docBody.append(div);
+            compScore++;
+            displayScore (playerScore, compScore)
         }
         else{
-            return "It's a tie"
+            let div = document.createElement('div');
+            div.textContent = "It's a tie"
+            docBody.append(div);
         }
     }
     else{
         if(playerSelection === "Rock"){
-            return "Player wins"
+            let div = document.createElement('div');
+            div.textContent = "Player wins"
+            docBody.append(div);
+            playerScore++;
+            displayScore (playerScore, compScore);
         }
         else if(playerSelection === "Paper"){
-            return "Computer wins"
+            let div = document.createElement('div');
+            div.textContent = "Computer Wins"
+            docBody.append(div);
+            compScore++;
+            displayScore (playerScore, compScore)
         }
         else{
-            return "It's a tie"
+            let div = document.createElement('div');
+            div.textContent = "It's a tie"
+            docBody.append(div);
         }
     }
 }
-function game (){
-    let compCount = 0;
-    let playerCount = 0;
-    for(let i =0; i<5; i++){
-        playerSelection = prompt("Rock, Paper or Scissors");
-        computerSelection = computerPlay();
-        let result = playRound(playerSelection, computerSelection);
-        console.log(`Round ${i+1}: `)
-        console.log(result);
-        if(result === "Player wins"){
-            playerCount++;
-        }
-        else if(result === "Computer Wins"){
-            compCount++;
-        }
-        else{}
-    }
-    if(compCount > playerCount){
-        console.log("Computer wins best of 5");
-    }
-    else if(playerCount > compCount){
-        console.log("Player wins best of 5");
-    }
-    else{
-        console.log("best of 5 results in a tie");
-    }
+
+playDisplay = document.querySelector('#playScore')
+compDisplay = document.querySelector('#compScore')
+
+
+function displayScore (playerScore, compScore){
     
+    playDisplay.innerText = playerScore;
+    compDisplay.innerText = compScore;
+ 
+    if(playerScore === 5){
+        playWinner = document.createElement('div');
+        playWinner.innerText = "Player has reached 5 points and has won the game"
+        docBody.append(playWinner);
+
+    }
+    else if (compScore === 5){
+        compWinner = document.createElement('div');
+        compWinner.innerText = "Computer has reached 5 points and has won the game"
+        docBody.append(compWinner);
+
+    }
+    else {}
+
+
+
 }
-game();
