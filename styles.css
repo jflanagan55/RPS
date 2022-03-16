@@ -1,0 +1,36 @@
+*{
+    font-family: 'Cantarell', sans-serif;  
+    margin:0;
+
+}
+body {
+    height: 100vh;
+    background-image: linear-gradient(to right, #26ada4, #1a89c9);
+}
+main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    
+}
+.scores {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+h2, h3 {
+    font-size: 32px;
+}
+button {
+    width: 8rem;
+   padding: 1rem;
+   border-radius: 0.5rem;
+   font-size: 16px;
+
+}

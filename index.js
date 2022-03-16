@@ -40,93 +40,93 @@ function computerPlay(){
 function playRound(playerSelection, computerSelection){
     if(computerSelection === "Rock"){
         if(playerSelection === "Scissors"){
-            let div = document.createElement('div');
-            div.textContent = "Computer Wins"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "Computer Wins"
             compScore++;
             displayScore (playerScore, compScore)
             
         }
         else if(playerSelection === "Paper"){
-            let div = document.createElement('div');
-            div.textContent = "Player wins"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "Player wins"
             playerScore++;
             displayScore (playerScore, compScore);
         }
         else{
-            let div = document.createElement('div');
-            div.textContent = "It's a tie"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "It's a tie"
         }
     }
     else if(computerSelection === "Paper"){
         if(playerSelection === "Scissors"){
-            let div = document.createElement('div');
-            div.textContent = "Player wins"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "Player wins"
             playerScore++;
             displayScore (playerScore, compScore);
         }
         else if(playerSelection === "Rock"){
-            let div = document.createElement('div');
-            div.textContent = "Computer Wins"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "Computer Wins"
             compScore++;
             displayScore (playerScore, compScore)
         }
         else{
-            let div = document.createElement('div');
-            div.textContent = "It's a tie"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "It's a tie"
         }
     }
     else{
         if(playerSelection === "Rock"){
-            let div = document.createElement('div');
-            div.textContent = "Player wins"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "Player wins"
             playerScore++;
             displayScore (playerScore, compScore);
         }
         else if(playerSelection === "Paper"){
-            let div = document.createElement('div');
-            div.textContent = "Computer Wins"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "Computer Wins"
             compScore++;
             displayScore (playerScore, compScore)
         }
         else{
-            let div = document.createElement('div');
-            div.textContent = "It's a tie"
-            docBody.append(div);
+            let result = document.querySelector('#results');
+            result.textContent = "It's a tie"
         }
     }
 }
 
-playDisplay = document.querySelector('#playScore')
-compDisplay = document.querySelector('#compScore')
+
 
 
 function displayScore (playerScore, compScore){
-    
-    playDisplay.innerText = playerScore;
-    compDisplay.innerText = compScore;
+   let playDisplay = document.querySelector('#playScore')
+   let compDisplay = document.querySelector('#compScore')
+   playDisplay.innerText = playerScore
+   compDisplay.innerText = compScore
  
     if(playerScore === 5){
-        playWinner = document.createElement('div');
-        playWinner.innerText = "Player has reached 5 points and has won the game"
-        docBody.append(playWinner);
+        let playerWinner =document.querySelector('#results')
+        playerWinner.innerText = "Player has reached 5 points and has won the game"
+        playDisplay.innerText = '0';
+        compDisplay.innerText = '0';
+        ResetCounters();
+       
+
 
     }
     else if (compScore === 5){
-        compWinner = document.createElement('div');
+        let compWinner = document.querySelector('#results');
         compWinner.innerText = "Computer has reached 5 points and has won the game"
-        docBody.append(compWinner);
-
+        playDisplay.innerText = '0';
+        compDisplay.innerText = '0';
+        ResetCounters();
+    
     }
     else {}
+    
+} 
 
-
-
+function ResetCounters(){
+    playerScore = 0;
+    compScore = 0;
 }
